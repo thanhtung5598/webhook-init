@@ -1,0 +1,20 @@
+version: "1"
+services:
+  service3:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database1
+    volumes:
+      - my_database_data:/app/data
+
+  database1:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - my_database_data:/data/db
+
+volumes:
+  my_database_data:
